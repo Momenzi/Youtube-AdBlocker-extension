@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Ad Block Ultimate Experience",
+  "version": "1.0.0",
+  "description": "Enjoy a seamless, ad-free YouTube experience. Blocks all video and banner ads, and bypasses anti-adblock walls.",
+  "icons": {
+    "16": "premium.png",
+    "48": "premium.png",
+    "128": "premium.png"
+  },
+  "permissions": ["scripting", "tabs", "webNavigation", "storage"],
+  "host_permissions": [
+    "*://*.youtube.com/*",
+    "*://*.googlevideo.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_start",
+      "all_frames": false
+    }
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_icon": "premium.png",
+    "default_title": "YouTube Ad Block Ultimate",
+    "default_popup": "popup.html"
+  }
+}
